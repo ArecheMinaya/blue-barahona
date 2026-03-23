@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+**/node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -16,13 +17,19 @@
 # next.js
 /.next/
 /out/
+/apps/*/.next/
 
 # production
 /build
+/apps/*/dist/
 
 # misc
 .DS_Store
 *.pem
+/.turbo/
+/apps/*/.turbo/
+playwright-report/
+test-results/
 
 # debug
 npm-debug.log*
@@ -39,3 +46,37 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local AI/dev tooling
+/.adal/
+/.agent/
+/.agents/
+/.augment/
+/.claude/
+/.codebuddy/
+/.commandcode/
+/.continue/
+/.cortex/
+/.crush/
+/.factory/
+/.goose/
+/.iflow/
+/.junie/
+/.kilocode/
+/.kiro/
+/.kode/
+/.mcpjam/
+/.mux/
+/.neovate/
+/.openhands/
+/.pi/
+/.pochi/
+/.qoder/
+/.qwen/
+/.roo/
+/.trae/
+/.vibe/
+/.windsurf/
+/.zencoder/
+/skills/
+/skills-lock.json

@@ -1,0 +1,14 @@
+{
+  "name": "@larimar/catalog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./products": "./src/products.ts",
+    "./shipping": "./src/shipping.ts"
+  },
+  "dependencies": {
+    "@larimar/types": "workspace:*"
+  }
+}
