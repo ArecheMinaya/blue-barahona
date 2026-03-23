@@ -3,7 +3,7 @@
 import type { FulfillmentStatus, Order } from "@larimar/types";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
 import { useCart } from "@/components/providers/cart-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { apiRequest } from "@/lib/api";
@@ -64,6 +64,9 @@ export function OrderDetailView({
   const { isAuthenticated, isReady, openAuthPanel, session } = useAuth();
   const [order, setOrder] = useState<Order | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const syncPaidOrderBag = useEffectEvent(() => {
+    clearCart();
+  });
 
   useEffect(() => {
     let isMounted = true;
@@ -86,7 +89,7 @@ export function OrderDetailView({
         setOrder(result.order);
 
         if (result.order.status === "paid") {
-          clearCart();
+          syncPaidOrderBag();
         }
       } finally {
         if (isMounted) {
@@ -100,7 +103,7 @@ export function OrderDetailView({
     return () => {
       isMounted = false;
     };
-  }, [clearCart, orderId, session?.access_token]);
+  }, [orderId, session?.access_token]);
 
   if (!isReady) {
     return (
